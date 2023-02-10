@@ -1,12 +1,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var progress: CGFloat = 0
-    @State private var name: String = ""
+    @State var progress: CGFloat = 0
+    @State var name: String = ""
+    @State var numberOfDays: Int = 7
 
     var body: some View {
         VStack {
             TextField("Enter the name of the streak", text: $name)
+            TextField("Enter the number of days", value: $numberOfDays, formatter: NumberFormatter())
+                .keyboardType(.numberPad)
             Circle()
                 .trim(from: 0, to: progress)
                 .stroke(Color.blue, lineWidth: 20)
@@ -16,8 +19,8 @@ struct ContentView: View {
                         .font(.title)
                         .bold()
                 )
-            Button("Advance the circle") {
-                self.progress += 1/7
+            Button("I have completed my streak") {
+                self.progress += 1/CGFloat(self.numberOfDays)
             }
         }
     }
