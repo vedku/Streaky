@@ -3,7 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @State var progress: CGFloat = 0
     @State var name: String = ""
-    @State var numberOfDays: Int = 7
+    @State var numberOfDays: Int = 20
 
     var body: some View {
         VStack {
@@ -15,9 +15,16 @@ struct ContentView: View {
                 .stroke(Color.blue, lineWidth: 20)
                 .frame(width: 300, height: 300)
                 .overlay(
-                    Text("(Int(progress * 100))%")
-                        .font(.title)
-                        .bold()
+                    VStack {
+                        Text("(name)")
+                        Text("(Int(progress * CGFloat(numberOfDays))) day(Int(progress * CGFloat(numberOfDays)) == 1 ? "" : "s")")
+                            .font(.title)
+                            .bold()
+                        Text("(String(format: "%.2f", (progress * 100)))% done")
+                            .font(.caption)
+                        Text("of (numberOfDays) days")
+                            .font(.caption)
+                    }
                 )
             Button("I have completed my streak") {
                 self.progress += 1/CGFloat(self.numberOfDays)
