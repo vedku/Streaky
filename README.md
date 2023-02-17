@@ -1,5 +1,6 @@
 # Streaky
 An app to track your streaks
+
 Now with dark mode!
 <div>
 <img width="322" alt="Screenshot 2023-02-15 at 11 47 17 AM" src="https://user-images.githubusercontent.com/57610056/218924182-10ddee24-275d-4e3b-ba59-b2ecffb03e00.png">
