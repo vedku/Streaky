@@ -1,5 +1,4 @@
 # Streaky
-An app to track your streaks
 
 Now with dark mode!
 <div>
