@@ -67,7 +67,7 @@ struct ContentView: View {
                     Text("-")
                         .font(.headline)
                         .foregroundColor(.white)
-                        .padding()
+                        .padding(30)
                         .background(Color.red)
                         .cornerRadius(10)
                 }
@@ -81,7 +81,7 @@ struct ContentView: View {
                     Text("+")
                         .font(.headline)
                         .foregroundColor(.white)
-                        .padding()
+                        .padding(30)
                         .background(Color.blue)
                         .cornerRadius(10)
                 }
