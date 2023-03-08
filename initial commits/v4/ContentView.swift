@@ -4,7 +4,7 @@ import SwiftUI
 struct ContentView: View {
     @State var progress: CGFloat = 0
     @State var name: String = ""
-    @State var numberOfDays: Int = 7
+    @State var numberOfDays: Int = 10
     @State var isDarkMode = false
     
     var body: some View {
@@ -56,7 +56,7 @@ struct ContentView: View {
                             .foregroundColor(isDarkMode ? Color.white : Color.black)
                     }
                 )
-                .padding()
+                .padding(50)
             
             HStack(spacing: 50) {
                 Button(action: {
@@ -87,7 +87,7 @@ struct ContentView: View {
                 }
                 .disabled(progress >= 1) // Disable when progress is already at 100%
             }
-            .padding(.top, 20)
+            .padding()
             
             Spacer()
             
