@@ -1,6 +1,6 @@
 # Streaky
-
-Now with dark mode!
+An app to track your streaks. 
+1st build - 22/03/2023
 <div>
 
 <img width="322" src="https://user-images.githubusercontent.com/57610056/219844337-d5c56914-af27-4135-8336-f7d0768ac9ba.png">
