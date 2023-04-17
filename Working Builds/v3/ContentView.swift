@@ -1,5 +1,6 @@
 import SwiftUI
 
+
 struct ContentView: View {
     @State var progress: CGFloat = 0
     @State var name: String = ""
@@ -136,24 +137,27 @@ struct ContentView: View {
         .overlay(
             Group {
                 if showAlert {
-                    Color.black.opacity(0.4).ignoresSafeArea()
+                    Color.black.opacity(0.7).ignoresSafeArea()
                     RoundedRectangle(cornerRadius: 20)
                         .fill(Color.white)
-                        .frame(width: 300, height: 150)
+                        .frame(width: 350, height: 200)
                         .overlay(
                             VStack(spacing: 10) {
                                 Text("Congratulations!")
                                     .font(.title)
                                     .bold()
+                                    .foregroundColor(Color.black)
                                 
                                 Text("You have completed your streak for today.")
+                                    .foregroundColor(Color.black)
+                                    
                                 
                                 Button(action: {
                                     self.showAlert = false
                                 }) {
                                     Text("Dismiss")
                                         .padding()
-                                        .background(Color.blue)
+                                        .background(Color.green)
                                         .foregroundColor(.white)
                                         .cornerRadius(10)
                                 }
@@ -172,3 +176,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
