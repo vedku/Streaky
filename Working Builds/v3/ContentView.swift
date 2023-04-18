@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 struct ContentView: View {
     @State var progress: CGFloat = 0
     @State var name: String = ""
@@ -9,6 +8,7 @@ struct ContentView: View {
     @State var isDarkMode = false
     @State var oldProgress: CGFloat = 0
     @State private var showAlert = false
+    @State private var showCompletionAlert = false
     
     var body: some View {
         VStack {
@@ -94,14 +94,16 @@ struct ContentView: View {
                         .cornerRadius(10)
                 }
                 .disabled(progress <= 0)
-                
+
                 Button(action: {
                     withAnimation {
                         if progress < 1 {
                             self.progress += 1/CGFloat(self.numberOfDays)
                             self.dayscompleted += 1
-                            if self.dayscompleted <= self.numberOfDays{
+                            if self.dayscompleted < self.numberOfDays{
                                 self.showAlert = true
+                            } else if self.dayscompleted == self.numberOfDays {
+                                self.showCompletionAlert = true
                             }
                         }
                         if progress >= 1 {
@@ -129,7 +131,7 @@ struct ContentView: View {
                 Image(systemName: isDarkMode ? "sun.max.fill" : "moon.fill")
                     .font(.title)
                     .foregroundColor(isDarkMode ? .white : .primary)
-            }
+            }   
         }
         .padding()
         .background(isDarkMode ? Color.black : Color.white)
@@ -167,10 +169,42 @@ struct ContentView: View {
                         .padding()
                         .shadow(color: Color.gray.opacity(0.8), radius: 5, x: 0, y: 2)
                 }
+                
+                if showCompletionAlert {
+                    Color.black.opacity(0.7).ignoresSafeArea()
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(Color.white)
+                        .frame(width: 350, height: 200)
+                        .overlay(
+                            VStack(spacing: 10) {
+                                Text("Congratulations!")
+                                    .font(.title)
+                                    .bold()
+                                    .foregroundColor(Color.black)
+                                
+                                Text("You have completed your Streak, \(name) for \(dayscompleted) days!")
+                                    .foregroundColor(Color.black)
+                                
+                                Button(action: {
+                                    self.showCompletionAlert = false
+                                }) {
+                                    Text("Dismiss")
+                                        .padding()
+                                        .background(Color.green)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(10)
+                                }
+                            }
+                                .padding()
+                        )
+                        .padding()
+                        .shadow(color: Color.gray.opacity(0.8), radius: 5, x: 0, y: 2)
+                }
             }
         )
     }
 }
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
